@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPOM {
+public class LoginTeacherPOM {
 	private WebDriver driver; 
 	
-	public LoginPOM(WebDriver driver) {
+	public LoginTeacherPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -21,6 +21,9 @@ public class LoginPOM {
 	
 	@FindBy(id="form-login_submitAuth")
 	private WebElement loginBtn; 
+	
+	String Firstname="";
+	String lastname="";
 	
 	public void sendUserName(String userName) {
 		this.userName.clear();
