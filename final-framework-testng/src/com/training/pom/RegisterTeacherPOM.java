@@ -50,6 +50,9 @@ public RegisterTeacherPOM(WebDriver driver) {
 	@FindBy(name="submit")
 	private WebElement RegisterBtn;
 	
+	@FindBy(xpath="//p[text()='An e-mail has been sent to remind you of your login and password.']")
+	private WebElement registermsg;
+	
 	public void sendFirstname(String Firstname) {
 		this.Firstname.clear();
 		this.Firstname.sendKeys(Firstname);
@@ -100,6 +103,11 @@ public RegisterTeacherPOM(WebDriver driver) {
 
 	public void clickSignupTeacher() {
 		this.SignupTeacher.click(); 
+	}
+	
+	public String registermsgdisplay() {
+		
+		return this.registermsg.getText();
 	}
 }
 	

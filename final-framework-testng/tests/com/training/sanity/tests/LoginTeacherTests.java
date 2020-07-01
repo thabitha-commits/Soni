@@ -60,9 +60,10 @@ public class LoginTeacherTests {
 		loginTeacherPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("LoginTeacher");
 		
-		//String expected= "Hello "+Firstname+" "+lastname+" and welcome";
-		//String actual=driver.findElement(By.xpath("//p[text()='An e-mail has been sent to remind you of your login and password.']']")).getText();
-		//Assert.assertEquals(actual, expected);			
+		String expected= "welcome";
+		String actual = loginTeacherPOM.succesloginTeacher();
+		Boolean actualtext = actual.contains(expected);
+		Assert.assertTrue(actualtext);
 		screenShot.captureScreenShot("RegisteredTeacher");
 	}
 }

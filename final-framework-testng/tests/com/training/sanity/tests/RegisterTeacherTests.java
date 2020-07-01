@@ -56,19 +56,19 @@ public class RegisterTeacherTests {
 		
 		registerTeacherPOM.clickSignupTeacher();
 		registerTeacherPOM.selectTeachcourses();
-		registerTeacherPOM.sendFirstname("laddu");
+		registerTeacherPOM.sendFirstname("keerthi1");
 		registerTeacherPOM.sendlastname("bang");
 		registerTeacherPOM.sendemail("sthabitha@gmail.com");
-		registerTeacherPOM.sendusername("laddu");
-		registerTeacherPOM.sendPassword("laddu123");
-		registerTeacherPOM.sendconfirmpassword("laddu123");
+		registerTeacherPOM.sendusername("keerthi1");
+		registerTeacherPOM.sendPassword("keerthi$123");
+		registerTeacherPOM.sendconfirmpassword("keerthi$123");
 		registerTeacherPOM.sendPhone("9876543220");
 		registerTeacherPOM.selectLanguage("English");
 		registerTeacherPOM.clickRegisterBtn();
 		
-	//	String expected= "An e-mail has been sent to remind you of your login and password.";
-	//	String actual=driver.findElement(By.xpath("//p[text()='An e-mail has been sent to remind you of your login and password.']']")).getText();
-	//	Assert.assertEquals(actual, expected);			
+	   String expected= "An e-mail has been sent to remind you of your login and password.";
+	   String actual= registerTeacherPOM.registermsgdisplay();
+	   Assert.assertEquals(actual, expected);			
 		screenShot.captureScreenShot("RegisteredTeacher");
 		
 	}

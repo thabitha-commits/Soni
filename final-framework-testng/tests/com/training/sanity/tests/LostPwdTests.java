@@ -57,7 +57,6 @@ public class LostPwdTests {
 		String actual=driver.findElement(By.xpath("//a[text()='Site Owner']")).getText();
 		Assert.assertEquals(actual, expected);			 
 		screenShot.captureScreenShot("LostPwd");
-		driver.close();
 	}
 	
 }

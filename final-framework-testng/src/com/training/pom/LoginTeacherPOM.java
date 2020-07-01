@@ -22,9 +22,10 @@ public class LoginTeacherPOM {
 	@FindBy(id="form-login_submitAuth")
 	private WebElement loginBtn; 
 	
-	String Firstname="";
-	String lastname="";
+	@FindBy(xpath="//p[text()=' and welcome,']")
+	private WebElement loginsuccess;
 	
+		
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
@@ -37,5 +38,10 @@ public class LoginTeacherPOM {
 	
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
+	}
+	
+public String succesloginTeacher() {
+		
+		return this.loginsuccess.getText();
 	}
 }
