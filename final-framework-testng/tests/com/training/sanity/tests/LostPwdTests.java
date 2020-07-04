@@ -17,6 +17,8 @@ import com.training.pom.LostPwdPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+//Objective: When User forgots his password and gets the password to his Email id while entering his username
+
 public class LostPwdTests {
 
 	private WebDriver driver;

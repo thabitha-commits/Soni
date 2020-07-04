@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,22 +16,23 @@ import org.testng.annotations.Test;
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
 import com.training.pom.LoginTeacherPOM;
+import com.training.pom.RegisterTeacherPOM;
+import com.training.pom.TeacherAssignmentPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 
-//Logging as Teacher successfully with the entered username and password
+//Objective:  Verify whether application allows teacher to add assignments & change default settings
 
-public class LoginTeacherTests {
+
+public class TeacherAssignmentTests {
 
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginTeacherPOM loginTeacherPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private LoginPOM loginPOM;
-    
-	
+	private TeacherAssignmentPOM teacherAssignmentPOM;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
@@ -42,8 +44,8 @@ public class LoginTeacherTests {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		loginPOM = new LoginPOM(driver); 
-		loginTeacherPOM = new LoginTeacherPOM(driver); 
+		loginTeacherPOM = new LoginTeacherPOM(driver);
+		teacherAssignmentPOM = new TeacherAssignmentPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -57,16 +59,31 @@ public class LoginTeacherTests {
 	}
 	
 	@Test
-	public void validLoginTeacherTest() {
+	public void TeacherAssignmentTests() throws InterruptedException {
 		loginTeacherPOM.sendUserName("pinky");
 		loginTeacherPOM.sendPassword("pinky123");
 		loginTeacherPOM.clickLoginBtn(); 
-		screenShot.captureScreenShot("LoginTeacher");
+		Thread.sleep(2000);
+		teacherAssignmentPOM.clickcourse();
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,50)");  
 		
-		String expected= "welcome";
-		String actual = loginTeacherPOM.succesloginTeacher();
-		Boolean actualtext = actual.contains(expected);
-		Assert.assertTrue(actualtext);
-		screenShot.captureScreenShot("RegisteredTeacher");
+		teacherAssignmentPOM.clickAssignments();
+		teacherAssignmentPOM.createAssignments();
+		teacherAssignmentPOM.enterAssignmentname("ManipalCourses");
+		Thread.sleep(10000);
+		teacherAssignmentPOM.frameDescription();
+		teacherAssignmentPOM.inputDescription("tests");
+		Thread.sleep(2000);
+		teacherAssignmentPOM.Advancedsettings();
+		teacherAssignmentPOM.enterMaximumscore("10");
+		teacherAssignmentPOM.clickvalidate();
+		
+	   String Expected = "Directory created";
+	   String Actual= teacherAssignmentPOM.dircreated();      
+	   Assert.assertEquals(Actual, Expected);               //Verifying the text after creating assignment whether directory created or not.
+	   screenShot.captureScreenShot("AssignmentCreation");
+		
 	}
+	
 }

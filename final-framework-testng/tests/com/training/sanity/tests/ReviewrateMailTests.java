@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,23 +16,25 @@ import org.testng.annotations.Test;
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
 import com.training.pom.LoginTeacherPOM;
+import com.training.pom.ReviewAssignmentsPOM;
+import com.training.pom.ReviewrateMailPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 
-//Logging as Teacher successfully with the entered username and password
+// Objective:  Verify whether application allows teacher to review, rate & send email about the test
 
-public class LoginTeacherTests {
+public class ReviewrateMailTests {
 
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginTeacherPOM loginTeacherPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private LoginPOM loginPOM;
+	private ReviewAssignmentsPOM reviewAssignmentPOM;
+	private ReviewrateMailPOM reviewrateMailPOM;
     
 	
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -42,8 +45,9 @@ public class LoginTeacherTests {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		loginPOM = new LoginPOM(driver); 
+		reviewAssignmentPOM = new ReviewAssignmentsPOM(driver); 
 		loginTeacherPOM = new LoginTeacherPOM(driver); 
+		reviewrateMailPOM = new ReviewrateMailPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -57,16 +61,25 @@ public class LoginTeacherTests {
 	}
 	
 	@Test
-	public void validLoginTeacherTest() {
-		loginTeacherPOM.sendUserName("pinky");
-		loginTeacherPOM.sendPassword("pinky123");
-		loginTeacherPOM.clickLoginBtn(); 
-		screenShot.captureScreenShot("LoginTeacher");
+	public void ReviewrateMailtests() {
 		
-		String expected= "welcome";
-		String actual = loginTeacherPOM.succesloginTeacher();
-		Boolean actualtext = actual.contains(expected);
-		Assert.assertTrue(actualtext);
-		screenShot.captureScreenShot("RegisteredTeacher");
+		reviewrateMailPOM.sendUserName("pinky");
+		reviewrateMailPOM.sendPassword("pinky123");
+		reviewrateMailPOM.clickLoginBtn(); 
+		reviewrateMailPOM.clickcourse();
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,50)"); 
+		reviewrateMailPOM.clickAssigned();
+		reviewrateMailPOM.clickdispAssignments();
+		reviewrateMailPOM.clickcorrectandrate();
+		reviewrateMailPOM.EnterScore("15");
+		reviewrateMailPOM.SendMail();
+		reviewrateMailPOM.SendMessage();
+
+		String Expected ="Update";
+		String Actual = reviewrateMailPOM.update();
+		Boolean actualtext = Actual.contains(Expected);
+		Assert.assertTrue(actualtext);					//Verifying the Actual & displayed text  'Updated' while sending mail
+		screenShot.captureScreenShot("SendMailforTest");
 	}
 }

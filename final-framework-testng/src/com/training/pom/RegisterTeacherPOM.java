@@ -17,8 +17,6 @@ public RegisterTeacherPOM(WebDriver driver) {
 	@FindBy(xpath="//a[contains(text(),'Sign up!')]")
 	private WebElement SignupTeacher;
 	
-	//@FindBy(xpath="//input[@type='radio'][@name='status'][1]")
-	//@FindBy(xpath="/html[1]/body[1]/main[1]/section[1]/div[1]/div[2]/div[1]/form[1]/fieldset[1]/div[1]/div[1]/div[2]/label[1]/input[1]")
 	@FindBy(xpath="//p[text()='Teach courses']//preceding-sibling::input")
 	private WebElement Teachcourses;
 	

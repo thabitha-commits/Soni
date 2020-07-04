@@ -18,6 +18,10 @@ import com.training.pom.RegisterTeacherPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+
+//Register to the application as a Teacher
+
+
 public class RegisterTeacherTests {
 
 	private WebDriver driver;
