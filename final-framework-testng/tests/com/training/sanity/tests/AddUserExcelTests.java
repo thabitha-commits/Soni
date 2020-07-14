@@ -15,23 +15,25 @@ import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
+import com.training.pom.AddUserPOM;
 import com.training.pom.LoginPOM;
-import com.training.pom.LoginTeacherPOM;
+import com.training.pom.RegisterTeacherPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 
-//Logging as Teacher successfully with the entered username and password
+//Objective: Verify if admin is able to add multiple new users as a trainer retrieved from an Excel Sheet and displays Extent Report
 
-public class LoginTeacherTests {
+
+public class AddUserExcelTests {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private LoginTeacherPOM loginTeacherPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private LoginPOM loginPOM;
+	private AddUserPOM adduserPOM;
 	static ExtentReports extent;
 	static ExtentTest extentTest;
 
@@ -42,15 +44,13 @@ public class LoginTeacherTests {
 		properties.load(inStream);
 		
 		extent = new ExtentReports(System.getProperty("user.dir")+"/test-output/soni.html");
-		extentTest = extent.startTest("Login Teacher");
-		
+		extentTest = extent.startTest("Add User");
 	}
 
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		loginPOM = new LoginPOM(driver); 
-		loginTeacherPOM = new LoginTeacherPOM(driver); 
+		adduserPOM = new AddUserPOM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
@@ -59,35 +59,51 @@ public class LoginTeacherTests {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		 extent.endTest(extentTest);
+		extent.endTest(extentTest);
 		 extent.flush();
-	     
 		Thread.sleep(1000);
 		driver.quit();
 	}
 	
-	@Test
-	public void validLoginTeacherTest() {
-		loginTeacherPOM.sendUserName("abc123");
-		loginTeacherPOM.sendPassword("Kristafar$123");
-		loginTeacherPOM.clickLoginBtn(); 
-		screenShot.captureScreenShot("LoginTeacher");
-       
+	@Test(dataProvider = "excel-inputs", dataProviderClass = LoginDataProviders.class)
+	public void AdduserTests(String FirstName, String lastname, String email, String Phone,String Login, String Userpassword) throws InterruptedException {
 		
-		String expected= "welcome";
-		String actual = loginTeacherPOM.succesloginTeacher();
+		adduserPOM.sendUserName("admin");
+		adduserPOM.enterPassword("admin@123");
+		adduserPOM.clickLoginBtn();
+		adduserPOM.AddaUser();
+
+		adduserPOM.sendFirstName(FirstName);
+		adduserPOM.sendlastname(lastname);
+		adduserPOM.sendemail(email);
+		adduserPOM.Phone(Phone);
+		adduserPOM.enterlogin(Login);
+		adduserPOM.passwordcheck();
+		adduserPOM.enterUserpassword(Userpassword);
+		adduserPOM.selecprofile();
+		adduserPOM.trainer();
+		Thread.sleep(1000);
+		adduserPOM.clickAdd();
+		Thread.sleep(2000);
+		
+		String expected= "user";
+		String actual = adduserPOM.useradded();
 		Boolean actualtext = actual.contains(expected);
-		 
+		
 		if (actualtext){
 			
-			extentTest.log(LogStatus.PASS, "Login successful");
+			extentTest.log(LogStatus.PASS, "user added successfully");
 
 		}else
 		{
-			extentTest.log(LogStatus.FAIL, "Login unsuccessful");
+			extentTest.log(LogStatus.FAIL, "user not added successfully");
 
 		}
 		
-		//screenShot.captureScreenShot("RegisteredTeacher");
+		screenShot.captureScreenShot("UsersAdded");
+
+		
+		
 	}
+	
 }

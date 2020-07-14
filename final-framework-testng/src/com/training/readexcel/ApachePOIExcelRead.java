@@ -20,7 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ApachePOIExcelRead {
 	public  String [][] getExcelContent(String fileName) {
-		int rowCount =0; 
+		int rowCount = 0; 
 		String [][] list1 = null; 
 		
 		try {
@@ -89,13 +89,14 @@ public class ApachePOIExcelRead {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
+		String fileName = "C:\\SONI\\ScreenshotPath_Manipal\\TestData.xlsx";
+		
 		
 		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
-			for(String  tt : temp){
+			for(String tt : temp){
 				System.out.println(tt);
 			}
 		}
-
 	}
-}
+	
+	}

@@ -28,7 +28,5 @@ public class GetConnection {
 		return null;
 	}
 	
-	public static Connection getOracleConnection(DBBean dbBean) {
-		return null;
-	}
+	
 }

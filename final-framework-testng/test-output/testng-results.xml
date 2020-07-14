@@ -1,29 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="39712" started-at="2020-07-04T17:41:15 IST" finished-at="2020-07-04T17:41:54 IST">
+  <suite name="Default suite" duration-ms="72847" started-at="2020-07-13T23:59:27 IST" finished-at="2020-07-14T00:00:40 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="39712" started-at="2020-07-04T17:41:15 IST" finished-at="2020-07-04T17:41:54 IST">
-      <class name="com.training.sanity.tests.ReviewrateMailTests">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.ReviewrateMailTests@5a8806ef]" name="setUpBeforeClass" is-config="true" duration-ms="19" started-at="2020-07-04T17:41:15 IST" finished-at="2020-07-04T17:41:15 IST">
+    <test name="Default test" duration-ms="72847" started-at="2020-07-13T23:59:27 IST" finished-at="2020-07-14T00:00:40 IST">
+      <class name="com.training.sanity.tests.AddUserDBTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="setUpBeforeClass" is-config="true" duration-ms="221" started-at="2020-07-13T23:59:27 IST" finished-at="2020-07-13T23:59:27 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.ReviewrateMailTests@5a8806ef]" name="setUp" is-config="true" duration-ms="12957" started-at="2020-07-04T17:41:15 IST" finished-at="2020-07-04T17:41:28 IST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="setUp" is-config="true" duration-ms="13349" started-at="2020-07-13T23:59:27 IST" finished-at="2020-07-13T23:59:41 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="ReviewrateMailtests()[pri:0, instance:com.training.sanity.tests.ReviewrateMailTests@5a8806ef]" name="ReviewrateMailtests" duration-ms="24644" started-at="2020-07-04T17:41:28 IST" finished-at="2020-07-04T17:41:52 IST">
+        <test-method status="PASS" signature="AdduserDBTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="AdduserDBTests" duration-ms="19674" started-at="2020-07-13T23:59:41 IST" data-provider="db-inputs" finished-at="2020-07-14T00:00:00 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[suma]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[last]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[suma@yahoo.com]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[5439885101]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[suma123]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Password$123]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ReviewrateMailtests -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.ReviewrateMailTests@5a8806ef]" name="tearDown" is-config="true" duration-ms="2022" started-at="2020-07-04T17:41:52 IST" finished-at="2020-07-04T17:41:54 IST">
+        </test-method> <!-- AdduserDBTests -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="tearDown" is-config="true" duration-ms="2495" started-at="2020-07-14T00:00:00 IST" finished-at="2020-07-14T00:00:03 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.sanity.tests.ReviewrateMailTests -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="setUp" is-config="true" duration-ms="10883" started-at="2020-07-14T00:00:03 IST" finished-at="2020-07-14T00:00:14 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="AdduserDBTests(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="AdduserDBTests" duration-ms="23633" started-at="2020-07-14T00:00:14 IST" data-provider="db-inputs" finished-at="2020-07-14T00:00:37 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[rajeev]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[last]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[rajeev@yahoo.com]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[5439885101]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[rajeev1233]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Password$123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AdduserDBTests -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.AddUserDBTest@26aa12dd]" name="tearDown" is-config="true" duration-ms="2181" started-at="2020-07-14T00:00:37 IST" finished-at="2020-07-14T00:00:40 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.training.sanity.tests.AddUserDBTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
