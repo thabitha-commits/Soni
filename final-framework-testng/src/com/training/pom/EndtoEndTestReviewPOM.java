@@ -26,11 +26,15 @@ public class EndtoEndTestReviewPOM {
 	@FindBy(xpath="//a[contains(text(),'testing innovation')]")
 	private WebElement course;
 	
-	@FindBy(xpath="//img[@id='toolimage_20016']")
-	private WebElement Tests;
+	@FindBy(xpath="//a[contains(text(),'innovationtesting1')]")
+	private WebElement course1;
 	
+		
 	@FindBy(xpath="//img[@title='Create a new test']")
 	private WebElement CreateTest;
+	
+	@FindBy(xpath="//input[@id='exercise_title']")
+	private WebElement Testname;
 	
 	@FindBy(xpath="//*[@class='table-responsive']/table/tbody/tr[@id='exercise_list_386']")
 	private WebElement trailtest2;
@@ -38,8 +42,9 @@ public class EndtoEndTestReviewPOM {
 	@FindBy(xpath="//div[@id='cke_1_contents']//iframe")
 	private WebElement frameDescription;
 	
+	//@FindBy(xpath="//*[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
 	@FindBy(xpath="//body[@class='cke_editable cke_editable_themed cke_contents_ltr cke_show_borders']")
-	private WebElement contexttest;
+	private WebElement inputcontexttest;
 	
 	@FindBy(xpath="//text()[contains(.,'Advanced settings')]/ancestor::button[1]")
 	private WebElement advancedsettings;
@@ -71,6 +76,7 @@ public class EndtoEndTestReviewPOM {
 	
 	@FindBy(xpath=" //div[@id='cke_2_contents']//iframe[@class='cke_wysiwyg_frame cke_reset']")
 	private WebElement framechoice1;
+	
 	
 	@FindBy(xpath="//div[@id='cke_4_contents']//iframe[@class='cke_wysiwyg_frame cke_reset']")
 	private WebElement framechoice2;
@@ -141,21 +147,47 @@ public class EndtoEndTestReviewPOM {
 	@FindBy(xpath="//li[@id='count_message_li']")
 	private WebElement countmessage;
 	
-	@FindBy(xpath="//td[contains(text(),'soni1 soni (kristafarraj)')]//a[@class='read'][contains(text(),'A learner attempted an exercise')]\n" + 
-			"")
+	@FindBy(xpath="//td[contains(text(),'soni daniel (soni)')]//a[@class='unread']")
 	private WebElement message;
 	
 	@FindBy(xpath="//a[contains(text(),'Click this link to check the answer and')]")
 	private WebElement feedbacklink;
 	
-	@FindBy(xpath=" //input[@id='qf_ce8c33']")
+	@FindBy(xpath="//input[@id='qf_ce8c33']")
 	private WebElement sendemail;
 	
 	
 	@FindBy(xpath="//text()[contains(.,'Correct test')]/ancestor::button[1]")
 	private WebElement correcttest;
 	
-	public void clickcorrecrtest() {
+	@FindBy(xpath="//tr[@id='335']//a[1]//img[1]")
+	private WebElement gradeicon;
+	
+public void inputcontexttest(String inputcontexttest) {
+		this.inputcontexttest.sendKeys(inputcontexttest);
+	}
+	
+	
+	@FindBy(xpath="//div[@class='alert alert-info']")
+	private WebElement messagesent;
+	
+	public String messagesent() {
+		return this.messagesent.getText();
+	}
+    public void clickmessage() {
+    	this.message.click();
+    }
+	public void entertestname(String Testname) {
+		this.Testname.sendKeys(Testname);
+	}
+	
+	public void clickgradeicon() {
+		this.gradeicon.click();
+	}
+	public void clickcourse1() {
+		this.course1.click();
+	}
+	public void clickcorrecttest() {
 		this.correcttest.click();
 	}
 	
@@ -166,7 +198,7 @@ public class EndtoEndTestReviewPOM {
 	public void clickfeedbacklink() {
 		this.feedbacklink.click();
 	}
-	public void countmessage() {
+	public void clickcountmessage() {
 		this.countmessage.click();
 	}
 	public void nextquestion() {
@@ -190,8 +222,12 @@ public class EndtoEndTestReviewPOM {
 		this.loginBtn.click(); 
 	}
 	
-	public void clickTesticon() {
-		this.Tests.click();
+	public void clickcourse() {
+		this.course.click();
+	}
+	
+	public void clickTestsicon() {
+		this.Testsicon.click();
 	}
 	public void CreateTest() {
 		this.CreateTest.click();
@@ -211,9 +247,6 @@ public class EndtoEndTestReviewPOM {
 		driver.switchTo().frame(this.frameDescription);
 	}
 	
-	public void entercontexttest(String contexttest) {
-		this.contexttest.sendKeys(contexttest);
-	}
 	
 	public void Enablestarttime() {
 		this.EnableStartTime.click();
@@ -236,21 +269,34 @@ public class EndtoEndTestReviewPOM {
 	public void question(String question) {
 		this.question.sendKeys(question);
 	}
-	public void framechoice1() {
+	public void framechoice1(String framechoice1) {
 		driver.switchTo().defaultContent();
 		driver.switchTo().frame(this.framechoice1);
 	}
+	public void inputframechoice1(String framechoice1) {
+		this.framechoice1.sendKeys(framechoice1);
+	}
+	
 	public void framechoice2() {
 		driver.switchTo().defaultContent();
 		driver.switchTo().frame(this.framechoice2);
+	}
+	public void inputframechoice2(String framechoice2) {
+		this.framechoice2.sendKeys(framechoice2);
 	}
 	public void framechoice3() {
 		driver.switchTo().defaultContent();
 		driver.switchTo().frame(this.framechoice3);
 	}
+	public void inputframechoice3(String framechoice3) {
+		this.framechoice3.sendKeys(framechoice3);
+	}
 	public void framechoice4() {
 		driver.switchTo().defaultContent();
 		driver.switchTo().frame(this.framechoice4);
+	}
+	public void inputframechoice4(String framechoice4) {
+		this.framechoice4.sendKeys(framechoice4);
 	}
 	public void addquestion() {
 		this.Addquestion.click();
@@ -273,7 +319,6 @@ public class EndtoEndTestReviewPOM {
 	public void entersearch(String search) {
 		this.entersearch.sendKeys(search);
 	}
-	//enter assignment name as assignment1
 	public void clicksearch() {
 		this.clicksearch.click();
 	}
@@ -285,9 +330,6 @@ public class EndtoEndTestReviewPOM {
 	}
 	public void logout() {
 		this.logout.click();
-	}
-	public void testicon() {
-		this.Testsicon.click();
 	}
 	public void stutestname() {
 		this.studenttestname.click();
@@ -301,6 +343,10 @@ public class EndtoEndTestReviewPOM {
 	public void clickEndtest() {
 		this.Endtest.click();
 	}
+	public void clickchoice1() {
+		this.choice1.click();
+	}
+	
 	
 	
 }
